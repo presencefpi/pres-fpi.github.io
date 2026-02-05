@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Presence FPI - Administration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  
+</head>
+<!-- MENU ADMIN DROIT -->
+<div class="admin-menu-right">
+  <button id="menuToggle" class="menu-toggle">☰</button>
+
+  <div id="adminMenu" class="admin-menu-dropdown">
+    
+    <div class="menu-group">
+      <button class="menu-subitem" id="menuAuditPrint"> ⬅
+      <button class="menu-item" id="menuAudit">Audit</button>
+      
+        
+      </button>
+    </div>
+
+    <div class="menu-group">
+      <button class="menu-item" id="menuPresence">
+      <button class="menu-item" id="menuPresencePrint">
+        Liste de présence imprimable
+      </button>
+    </div>
+
+    <button class="menu-item" id="menuReglage">Réglages</button>
+    <button class="menu-item" id="menuAbout">À propos</button>
+
+  </div>
+</div>
+
+<body class="agent-page">
+
+  <div class="agent-container">
+
+    <h1 class="agent-title">Interface Administrateur</h1>
+
+<!-- VERROU ADMIN -->
+<div id="adminLock" class="admin-lock">
+  <div class="admin-lock-box">
+    <h2>🔐 Accès Administrateur</h2>
+
+    <input type="password" id="adminPassword" placeholder="Mot de passe">
+
+    <button id="adminLoginBtn">Entrer</button>
+
+    <!-- 🔙 bouton retour -->
+    <button id="adminBackBtn" class="btn-retour">
+      ⬅ Retour à l’accueil
+    </button>
+
+    <p id="adminLockMsg"></p>
+  </div>
+</div>
+
+    <!-- MENU PRINCIPAL -->
+    <div id="mainAdminMenu">
+      <button id="openFormBtn" class="admin-btn">➕ Enregistrer un agent</button>
+      <button id="openListBtn" class="admin-btn">📋 Liste des agents</button>
+    </div>
+<button id="btnAccueilAdmin" class="btn-retour">
+  ⬅ Retour à l’accueil
+</button>
+
+    <!-- FORMULAIRE -->
+    <div id="agentForm" class="admin-form hidden">
+      <input type="number" id="ordre" placeholder="N° d’ordre">
+      <input type="text" id="nom" placeholder="Nom">
+      <input type="text" id="postnom" placeholder="Postnom">
+      <input type="text" id="matriculeAdmin" placeholder="Matricule">
+      <input type="text" id="grade" placeholder="Grade">
+
+      <button id="saveAgentBtn">Enregistrer</button>
+      <button class="back-btn" id="backFromForm">⬅ Retour</button>
+    </div>
+
+    <!-- LISTE DES AGENTS -->
+    <div id="agentList" class="hidden">
+      <div id="listContainer"></div>
+      <button class="back-btn" id="backFromList">⬅ Retour</button>
+    </div>
+
+    <div class="message-zone" id="adminMessage">En attente d’action...</div>
+
+  </div>
+<section id="auditDashboard" class="hidden">
+
+  <h2>Audit – Mouvements supprimés</h2>
+
+  <div id="auditFilters">
+    <label>Date : <input type="date" id="auditDateFilter"></label>
+    <label>Matricule : <input type="text" id="auditMatriculeFilter"></label>
+    <button id="auditFilterBtn">Filtrer</button>
+  </div>
+
+
+  <table id="auditTable">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Matricule</th>
+        <th>Nom</th>
+        <th>Entrée</th>
+        <th>Sortie</th>
+        <th>Statut</th>
+        <th>Justif entrée</th>
+        <th>Justif sortie</th>
+        <th>Photo entrée</th>
+        <th>Photo sortie</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+<label>Logo de l’entreprise:</label>
+<input type="file" id="logoInput" accept="image/*">
+
+<label>Nom VISA/DP :</label>
+<input type="text" id="visaName" placeholder="Nom VISA/DP">
+
+<label>Nom Adjoint au Directeur :</label>
+<input type="text" id="adjointName" placeholder="Nom Adjoint au Directeur">
+  <button id="clearAuditBtn">Vider audit</button>
+  <button id="printAuditBtn">Imprimer</button>
+  <button id="backFromAudit">Retour</button>
+
+</section>
+<div id="presencePage" class="hidden">
+
+  <h2>Liste de présence – Journée du <span id="presenceDate"></span></h2>
+
+  <table id="presenceTable" border="1" cellspacing="0" cellpadding="4">
+    <thead>
+      <tr>
+        <th>N°</th>
+        <th>Nom & Postnom</th>
+        <th>Matricule</th>
+        <th>Grade</th>
+        <th>Heure d’arrivée</th>
+        <th>Heure de sortie</th>
+        <th>Observation</th>
+        <th>Signature</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+<label>Nom VISA/DP – page cadres supérieurs :</label>
+<input type="text" id="visaPage1">
+
+<label>Adjoint au Directeur – page cadres supérieurs :</label>
+<input type="text" id="respPage1">
+
+<label>Nom VISA/DP – pages suivantes :</label>
+<input type="text" id="visaPageN">
+
+<label>Responsable de service – pages suivantes :</label>
+<input type="text" id="respPageN">
+
+  <button id="presencePrintBtn">Imprimer</button>
+  <button id="presenceBackBtn">Retour</button>
+
+</div>
+
+ <script src="js/data.js"></script>
+<script src="js/admin.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sécurité | Presence FPI</title>
+  <link rel="stylesheet" href="css/style.css" />
+  
+</head>
+<body>
+
+  <header class="header">
+    <h1>Poste Sécurité</h1>
+    <button onclick="history.back()" class="btn-retour">Retour</button>
+    <button id="clearSecurite" class="btn-danger">
+      Supprimer la journée
+    </button>
+  </header>
+
+  <section class="table-container">
+    <table id="tableSecurite">
+      <thead>
+        <tr>
+          <th>Matricule</th>
+          <th>Nom</th>
+          <th>Heure Entrée</th>
+          <th>Heure Sortie</th>
+          <th>Photo Entrée</th>
+          <th>Photo Sortie</th>
+          <th>Statut</th>
+          <th>Justif. Entrée</th>
+          <th>Justif. Sortie</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+<div class="securite-nav">
+  <button id="prevDay" class="btn-retour">⬅ Jour précédent</button>
+  <strong id="currentDayLabel"></strong>
+  <button id="nextDay" class="btn-retour">Jour suivant ➡</button>
+</div>
+  <script src="js/data.js"></script>
+  <script src="js/securite.js"></script>
+</body>
+</html>

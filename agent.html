@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Presence FPI - Agent</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="agent-page">
+
+  <div class="agent-container">
+
+    <h1 class="agent-title">Interface Agent</h1>
+
+    <!-- Horloge -->
+    <div class="clock-box">
+      <div id="clock" class="clock">00:00:00</div>
+      <div id="date" class="date">--/--/----</div>
+    </div>
+
+    <!-- Camera -->
+    <div class="camera-box">
+     <video id="video" autoplay muted playsinline class="hidden-camera"></video>
+    </div>
+
+    <!-- Matricule -->
+    <div class="input-zone">
+      <input type="text" id="matricule" placeholder="Numéro matricule">
+      <button id="validateBtn">Valider</button>
+    </div>
+
+    <button id="btnAccueil" class="btn-retour">
+  ⬅ Retour à l’accueil
+</button>
+
+    <!-- Message -->
+    <div class="message-zone" id="message">
+      En attente de validation...
+    </div>
+<!-- Justification (cachée par défaut) -->
+<div id="justificationZone" class="hidden">
+  <select id="justification">
+    <option value="">-- Sélectionner une justification --</option>
+  </select>
+</div>
+
+    <!-- Photo capturée -->
+    <div class="photo-zone">
+  <canvas id="canvas"></canvas>
+  <img id="photo" alt="Photo capturée">
+</div>
+
+  </div>
+
+  <script src="js/clock.js"></script>
+<script src="js/data.js"></script>
+<script src="js/camera.js"></script>
+<script src="js/agent.js"></script>
+
+</body>
+</html>
