@@ -1,0 +1,1001 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* BODY */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+/* CONTAINER */
+.container {
+  text-align: center;
+  width: 90%;
+  max-width: 900px;
+}
+
+/* TITLES */
+.title {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+/* CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #fff;
+  transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+}
+
+.card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+/* HOVER EFFECT */
+.card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* DIFFERENT ACCENTS */
+.agent { border-top: 4px solid #00eaff; }
+.securite { border-top: 4px solid #ffd000; }
+.admin { border-top: 4px solid #ff4d4d; }
+/* =======================
+   INTERFACE AGENT
+======================= */
+
+.agent-page {
+  background: radial-gradient(circle at top, #0f4c75, #000);
+}
+
+.agent-container {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 30px 25px;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 234, 255, 0.3);
+  text-align: center;
+}
+
+.agent-title {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+
+/* CLOCK */
+.clock-box {
+  margin-bottom: 30px;
+}
+
+.clock {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #00eaff;
+  text-shadow: 0 0 10px #00eaff, 0 0 25px rgba(0, 234, 255, 0.8);
+}
+
+.date {
+  margin-top: 8px;
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+/* INPUT ZONE */
+.input-zone {
+  margin-bottom: 20px;
+}
+
+.input-zone input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  margin-bottom: 12px;
+}
+
+.input-zone button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #00eaff;
+  color: #000;
+  cursor: not-allowed;
+}
+
+/* MESSAGE */
+.message-zone {
+  margin-top: 15px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+/* CAMERA */
+.camera-box {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.camera-box video {
+  width: 100%;
+  border-radius: 12px;
+  border: 2px solid #00eaff;
+  box-shadow: 0 0 15px rgba(0, 234, 255, 0.5);
+}
+
+/* PHOTO ZONE */
+.photo-zone {
+  margin-top: 30px;
+}
+
+.photo-zone canvas {
+  display: none;
+}
+
+.photo-zone img {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 10px;
+  display: none;
+  border: 2px solid #00eaff;
+  box-shadow: 0 0 15px rgba(0, 234, 255, 0.5);
+}
+/* CAMÉRA CACHÉE */
+.hidden-camera {
+  position: fixed;
+  top: -1000px;
+  left: -1000px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+/* PHOTO ZONE TOUT EN BAS */
+.photo-zone {
+  margin-top: 600px; /* force le scroll */
+  padding-bottom: 50px;
+}
+
+.photo-zone canvas {
+  display: none;
+}
+
+.photo-zone img {
+  width: 100%;
+  max-width: 450px;
+  display: none;
+  border-radius: 12px;
+  border: 2px solid #00eaff;
+  box-shadow: 0 0 15px rgba(0, 234, 255, 0.5);
+  margin: auto;
+}
+/* RETOUR */
+.back-btn {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: #ff4d4d;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* LISTE AGENTS */
+#listContainer {
+  margin-bottom: 15px;
+}
+
+.agent-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.agent-item strong {
+  display: block;
+}
+
+.agent-actions {
+  margin-top: 8px;
+  display: flex;
+  gap: 10px;
+}
+
+.agent-actions button {
+  flex: 1;
+  padding: 6px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background: #ffd000;
+}
+
+.delete-btn {
+  background: #ff4d4d;
+  color: #fff;
+}
+/* ADMIN */
+.admin-btn {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 8px;
+  background: #ffd000;
+  color: #000;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.admin-form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.admin-form button {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #00eaff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+/* JUSTIFICATION */
+#justificationZone {
+  margin-top: 15px;
+}
+
+#justification {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+/* TABLE SECURITE */
+
+.table-container {
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #111;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+
+tr:nth-child(even) {
+  background: #1a1a1a;
+}
+
+.btn-retour {
+  background: #444;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+/* ===== CONTENEUR ===== */
+.securite-container {
+  padding: 20px;
+}
+
+/* ===== HEADER ===== */
+.securite-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* ===== BOUTON ===== */
+.btn-danger {
+  background: #c62828;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-danger:hover {
+  background: #b71c1c;
+}
+
+/* ===== TABLEAU ===== */
+#tableSecurite {
+  width: 100%;
+  border-collapse: collapse;
+  background: #072a49e8;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#tableSecurite th {
+  background: #1e1e2fe0;
+  color: white;
+  padding: 12px;
+}
+
+#tableSecurite td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #d40a0a;
+}
+
+#tableSecurite tr:hover {
+  background: #000a14;
+}
+
+/* ===== PHOTOS ===== */
+.photo-sec {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* ===== STATUT ===== */
+.statut {
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.statut.present {
+  background: #c8e6c9;
+  color: #256029;
+}
+
+.statut.sorti {
+  background: #ffcdd2;
+  color: #b71c1c;
+}
+/* ===== MENU ADMIN DROIT ===== */
+.admin-menu-right {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+.menu-toggle {
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit; /* garde ton thème */
+}
+
+/* dropdown */
+.admin-menu-dropdown {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+  width: 260px;
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.admin-menu-dropdown.active {
+  display: flex;
+}
+
+.menu-group {
+  border-bottom: 1px solid #eee;
+}
+
+.menu-item {
+  background: none;
+  border: none;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+
+.menu-item:hover {
+  background: #f4f6f8;
+}
+
+.menu-subitem {
+  background: none;
+  border: none;
+  padding: 10px 32px;
+  text-align: left;
+  font-size: 13px;
+  cursor: pointer;
+  width: 100%;
+  color: #555;
+}
+
+.menu-subitem:hover {
+  background: #f0f0f0;
+}
+
+#auditDashboard {
+  width: 100%;
+  height: 100vh;
+  padding: 15px;
+  box-sizing: border-box;
+  background: #0b2447;           /* même thème foncé */
+  color: white;
+  overflow-y: auto;
+}
+
+.audit-title {
+  font-size: 22px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* conteneur tableau */
+#auditTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: #091a33;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* en-tête tableau */
+#auditTable thead {
+  background: #19376d;
+  position: sticky;
+  top: 0;
+}
+
+/* cellules */
+#auditTable th,
+#auditTable td {
+  padding: 8px;
+  text-align: center;
+}
+
+/* séparation */
+#auditTable tr {
+  border-bottom: 1px solid #0f2a4c;
+}
+
+/* alternance des lignes */
+#auditTable tbody tr:nth-child(odd) {
+  background: #0b2a4a;
+}
+
+/* images */
+#auditTable img {
+  border-radius: 5px;
+}
+.audit-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.audit-filters input,
+.audit-filters button {
+  padding: 6px;
+  border-radius: 6px;
+  border: none;
+}
+@media print {
+
+  button,
+  label,
+  input,
+  select {
+    display: inline-block !important;
+    color: black !important;
+    background: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  table, th, td {
+    border: 1px solid black !important;
+  }
+}
+/* ====== SECTIONS PLEIN ÉCRAN ====== */
+
+#auditDashboard,
+#presencePage {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  background: radial-gradient(circle at top, #0f4c75, #000);
+  color: white;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* ====== TITRES ====== */
+
+#auditDashboard h2,
+#presencePage h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+/* ====== LABELS ET INPUTS ====== */
+
+#auditDashboard label,
+#presencePage label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 4px;
+  font-size: 0.95rem;
+}
+
+#auditDashboard input,
+#presencePage input {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 6px;
+  outline: none;
+}
+
+/* ====== BOUTONS ====== */
+
+#auditDashboard button,
+#presencePage button {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* couleurs cohérentes avec ton app */
+#printAuditBtn,
+#presencePrintBtn {
+  background: #ffd000;
+  color: black;
+}
+
+#clearAuditBtn {
+  background: #ff4d4d;
+  color: white;
+}
+
+#backFromAudit,
+#presenceBackBtn {
+  background: #00eaff;
+  color: black;
+}
+
+/* ====== TABLEAUX ====== */
+
+#auditTable,
+#presenceTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#auditTable th,
+#presenceTable th {
+  background: #19376d;
+  padding: 8px;
+}
+
+#auditTable td,
+#presenceTable td {
+  padding: 6px;
+  text-align: center;
+  border-bottom: 1px solid #0f2a4c;
+}
+
+#auditTable tr:nth-child(even),
+#presenceTable tr:nth-child(even) {
+  background: #0b2a4a;
+}
+@media print {
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  #auditDashboard,
+  #presencePage {
+    background: white !important;
+    color: black !important;
+  }
+
+  button {
+    display: none !important; /* on cache les boutons à l'impression */
+  }
+
+  table, th, td {
+    border: 1px solid black !important;
+  }
+}
+#aboutIcon {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 28px;
+  text-decoration: none;
+  background: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+#splash{
+  position: fixed;
+  inset: 0;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: hideSplash 1s ease 2.2s forwards;
+}
+
+.splash-logo{
+  width: 180px;
+  opacity: 0;
+  animation: logoAnim 2s ease forwards;
+}
+
+/* Logo zoom + fade */
+@keyframes logoAnim{
+  0%{ transform: scale(.6); opacity:0; }
+  60%{ opacity:1; }
+  100%{ transform: scale(1); opacity:1; }
+}
+
+/* Disparition du splash */
+@keyframes hideSplash{
+  to{
+    opacity:0;
+    visibility:hidden;
+  }
+}
+#splash{
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #0a2a6b, #000);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  z-index: 9999;
+  color: white;
+  text-align: center;
+  animation: hideSplash 0.8s ease 3.5s forwards;
+}
+
+/* vague lumineuse */
+.wave{
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.2);
+  box-shadow: 0 0 35px rgba(255,255,255,.8);
+  filter: blur(3px);
+  animation: pulse 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse{
+  0%{ transform: scale(.8); opacity:.6; }
+  50%{ transform: scale(1.15); opacity:1; }
+  100%{ transform: scale(.8); opacity:.6; }
+}
+
+/* disparition de l'écran */
+@keyframes hideSplash{
+  to{ opacity:0; visibility:hidden; }
+}
+
+h1{
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+h2{
+  font-size: 16px;
+  opacity:.85;
+}
+.loader{
+  width: 60%;
+  max-width: 450px;
+  height: 8px;
+  border-radius: 6px;
+  background: rgba(255,255,255,.25);
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progress{
+  height: 100%;
+  width: 0%;
+  background: white;
+  animation: loadBar 3s linear forwards;
+}
+
+@keyframes loadBar{
+  from{ width: 0%; }
+  to{ width: 100%; }
+}
+
+/* Bouton retour accueil – style uniforme appli */
+.btn-retour {
+  background: linear-gradient(135deg, #0a2a6b, #1a4fb7);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Effet hover */
+.btn-retour:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35);
+  opacity: 0.95;
+}
+
+/* Effet clic */
+.btn-retour:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+/* ===== VERROU ADMIN ===== */
+.admin-lock {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(2, 27, 58, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.admin-lock-box {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 320px;
+  text-align: center;
+}
+
+.admin-lock-box h2 {
+  margin-bottom: 15px;
+  color: #021b3a;
+}
+
+.admin-lock-box input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+}
+
+.admin-lock-box button {
+  width: 100%;
+  padding: 10px;
+  background: #021b3a;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#adminLockMsg {
+  margin-top: 10px;
+  color: red;
+  font-size: 14px;
+}
+/* ====== BOUTONS ÉCRAN VERROU ADMIN ====== */
+
+.admin-lock-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* ✅ petit écart entre les boutons */
+}
+
+/* style commun aux boutons */
+.admin-lock-box button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* bouton Entrer */
+#adminLoginBtn {
+  background-color: #0a7cff;
+  color: white;
+}
+
+#adminLoginBtn:hover {
+  background-color: #065ec0;
+}
+
+/* bouton Retour */
+#adminBackBtn {
+  background-color: #e5e5e5;
+  color: #222;
+}
+
+#adminBackBtn:hover {
+  background-color: #cfcfcf;
+}
+.system-status {
+  margin-top: 20px;              /* ⬅ monte plus haut */
+  margin-bottom: 18px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 15px;              /* ⬅ un peu plus visible */
+  font-weight: 500;
+  color: #ddc229b4;               /* bleu pro institution */
+  opacity: 0.95;
+}
+
+.status-dot {
+  width: 12px;                  /* ⬅ plus visible */
+  height: 12px;
+  background: #1fa64a;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(31,166,74,0.6);
+  animation: pulse 2s infinite;
+}
+.statut-present {
+  color: #0f8a0f;
+  font-weight: bold;
+  animation: blinkGreen 1s infinite;
+}
+
+@keyframes blinkGreen {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+.bilan-box {
+  display: flex;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.bilan-item {
+  flex: 1;
+  background: #f4f6f8;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+}
+
+.bilan-item span {
+  display: block;
+  font-size: 13px;
+  color: #555;
+}
+
+.bilan-item strong {
+  font-size: 22px;
+  color: #222;
+}
+.statut-present{
+  color:#2ecc71;
+  font-weight:bold;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink{
+  50%{opacity:0.3;}
+}
+/* ===============================
+   MODE PLEIN ÉCRAN ADMIN
+=============================== */
+
+.fullscreen-admin {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  overflow: auto;
+  z-index: 999;
+  padding: 20px;
+}
