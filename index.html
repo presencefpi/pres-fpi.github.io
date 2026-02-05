@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Presence FPI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+<style>
+/* vague lumineuse */
+.wave {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.45), transparent 60%);
+  mix-blend:overlay;
+  opacity:0.5;
+  animation:waveMove 4s linear infinite;
+}
+
+/* mouvement */
+@keyframes waveMove{
+  0%{transform:translateX(-30%) translateY(-20%) scale(1.2);}
+  50%{transform:translateX(20%) translateY(10%) scale(1.4);}
+  100%{transform:translateX(-30%) translateY(-20%) scale(1.2);}
+}
+
+/* pour que la vague disparaisse avec le splash */
+.hideSplash .wave{
+  display:none;
+}
+</style>
+
+  <style>
+    /* fond splash */
+    #splash{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:#021b3a;
+      color:white;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+    }
+
+    .splash-logo{
+      width:110px;
+      margin-bottom:15px;
+    }
+
+    /* barre de chargement */
+    .loader{
+      width:60%;
+      max-width:420px;
+      height:8px;
+      background:rgba(255,255,255,.3);
+      border-radius:6px;
+      overflow:hidden;
+      margin-top:14px;
+    }
+
+    .progress{
+      width:0%;
+      height:100%;
+      background:white;
+      animation:loadBar 3s linear forwards;
+    }
+
+    @keyframes loadBar{
+      from{width:0%;}
+      to{width:100%;}
+    }
+
+    /* disparition splash */
+    .hideSplash{
+      animation:fadeOut .8s forwards;
+    }
+
+    @keyframes fadeOut{
+      to{
+        opacity:0;
+        visibility:hidden;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ÉCRAN D’OUVERTURE -->
+<div id="splash">
+  <div class="wave"></div>
+
+  <img src="assets/icons/logo2.png" class="splash-logo">
+
+  <h1 id="typeText1"></h1>
+  <h2 id="typeText2"></h2>
+
+  <div class="loader">
+    <div class="progress"></div>
+  </div>
+</div>
+
+
+<script>
+let text1 = "FOND POUR LA PROMOTION DE L'INDUSTRIE (DPKC)";
+let text2 = "Liste de présence numérique";
+
+let i = 0;
+let j = 0;
+
+function typeTitle(){
+  if(i < text1.length){
+    document.getElementById("typeText1").textContent += text1.charAt(i);
+    i++;
+    setTimeout(typeTitle, 25);
+  } else {
+    setTimeout(typeSubtitle, 200);
+  }
+}
+
+function typeSubtitle(){
+  if(j < text2.length){
+    document.getElementById("typeText2").textContent += text2.charAt(j);
+    j++;
+    setTimeout(typeSubtitle, 25);
+  }
+}
+
+typeTitle();
+
+/* masque tout l’écran d’animation après 4 secondes */
+setTimeout(()=>{
+  document.getElementById("splash").classList.add("hideSplash");
+},9000);
+</script>
+
+
+<!-- CONTENU PRINCIPAL -->
+<div class="container">
+  <h1 class="title">Presence FPI</h1>
+  <p class="subtitle">Système numérique de gestion de présence</p>
+<div class="system-status">
+  <span class="status-dot"></span>
+  <span id="systemText">Système actif</span>
+  <span id="systemTime"></span>
+</div>
+
+  <div class="cards">
+    <a href="agent.html" class="card agent">
+      <h2>Agent</h2>
+      <p>Enregistrement de présence</p>
+    </a>
+
+    <a href="securite.html" class="card securite">
+      <h2>Sécurité</h2>
+      <p>Suivi des mouvements</p>
+    </a>
+
+    <a href="admin.html" class="card admin">
+      <h2>Administrateur</h2>
+      <p>Gestion du système</p>
+    </a>
+  </div>
+</div>
+
+<a href="about.html" id="aboutIcon" title="À propos de l'application">
+  ❔
+</a>
+<script>
+const splash = document.getElementById("splash");
+
+// si l'app vient d'être ouverte
+if (!sessionStorage.getItem("appStarted")) {
+  splash.style.display = "flex";
+
+  sessionStorage.setItem("appStarted", "yes");
+
+  setTimeout(() => {
+    splash.classList.add("hideSplash");
+  }, 5000); // animation plus lente et visible
+} else {
+  splash.style.display = "none";
+}
+</script>
+<script>
+function updateSystemTime() {
+  const now = new Date();
+  const time = now.toLocaleTimeString('fr-FR');
+  const date = now.toLocaleDateString('fr-FR');
+
+  document.getElementById("systemTime").textContent = `• ${date} ${time}`;
+}
+
+setInterval(updateSystemTime, 1000);
+updateSystemTime();
+</script>
+
+</body>
+</html>
