@@ -3,13 +3,13 @@
 =============================== */
 
 const sounds = {
-  click: new Audio("sounds/click.mp3"),
-  entree: new Audio("sounds/entrée_ok.mp3"),
-  sortie: new Audio("sounds/sortie_ok.mp3"),
-  refus: new Audio("sounds/refus.mp3"),
-  depart: new Audio("sounds/depart.mp3"),
-  retard: new Audio("sounds/retard.mp3"),
-  inconnu: new Audio("sounds/matricule inconnu.mp3")
+  click: new Audio("click.mp3"),
+  entree: new Audio("entrée_ok.mp3"),
+  sortie: new Audio("sortie_ok.mp3"),
+  refus: new Audio("refus.mp3"),
+  depart: new Audio("depart.mp3"),
+  retard: new Audio("retard.mp3"),
+  inconnu: new Audio("matricule inconnu.mp3")
 };
 
 function playSound(type) {
